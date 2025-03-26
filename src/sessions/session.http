@@ -1,0 +1,55 @@
+@baseUrl = http://localhost:3000
+@authToken = seu_token_jwt_aqui
+@sessionId = id_da_sessao_aqui
+@userId = id_do_usuario_aqui
+
+### Criar uma nova sessão
+POST {{baseUrl}}/sessions
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "token": "token_de_exemplo",
+  "deviceInfo": "Dispositivo Exemplo",
+  "ipAddress": "192.168.0.1"
+}
+
+### Obter todas as sessões
+GET {{baseUrl}}/sessions
+Authorization: Bearer {{authToken}}
+
+### Obter uma sessão específica
+GET {{baseUrl}}/sessions/{{sessionId}}
+Authorization: Bearer {{authToken}}
+
+### Atualizar uma sessão
+PATCH {{baseUrl}}/sessions/{{sessionId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "token": "novo_token_de_exemplo",
+  "deviceInfo": "Novo Dispositivo Exemplo",
+  "ipAddress": "192.168.0.2"
+}
+
+### Remover uma sessão
+DELETE {{baseUrl}}/sessions/{{sessionId}}
+Authorization: Bearer {{authToken}}
+
+### Obter sessões de um usuário específico
+GET {{baseUrl}}/sessions/user/{{userId}}
+Authorization: Bearer {{authToken}}
+
+### Desativar uma sessão
+PATCH {{baseUrl}}/sessions/{{sessionId}}/deactivate
+Authorization: Bearer {{authToken}}
+
+### Desativar todas as sessões de um usuário
+PATCH {{baseUrl}}/sessions/user/{{userId}}/deactivate-all
+Authorization: Bearer {{authToken}}
+
+### Atualizar a última atividade de uma sessão
+PATCH {{baseUrl}}/sessions/{{sessionId}}/update-activity
+Authorization: Bearer {{authToken}}

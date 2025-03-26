@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:3000
+@authToken = seu_token_jwt_aqui
+@userId = id_do_usuario_aqui
+
+### Criar um novo usuário
+POST {{baseUrl}}/users
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "novo.usuario@example.com",
+  "password": "senha123",
+  "firstName": "Novo",
+  "lastName": "Usuário",
+  "roles": ["admin"]
+}
+
+### Obter todos os usuários
+GET {{baseUrl}}/users
+Authorization: Bearer {{authToken}}
+
+### Obter um usuário específico
+GET {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{authToken}}
+
+### Atualizar um usuário
+PATCH {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "firstName": "Usuário",
+  "lastName": "Atualizado",
+  "password": "novaSenha123"
+}
+
+### Remover um usuário
+DELETE {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{authToken}}
+
+### Obter as escolas do usuário autenticado
+GET {{baseUrl}}/users/my-schools
+Authorization: Bearer {{authToken}}
