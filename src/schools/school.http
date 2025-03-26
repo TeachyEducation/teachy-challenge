@@ -1,0 +1,45 @@
+@baseUrl = http://localhost:3000
+@authToken = seu_token_jwt_aqui
+@schoolId = id_da_escola_aqui
+
+### Criar uma nova escola
+POST {{baseUrl}}/schools
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Nova Escola",
+  "address": "Rua Exemplo, 123",
+  "city": "Cidade Exemplo",
+  "state": "Estado Exemplo",
+  "country": "País Exemplo",
+  "phone": "123456789",
+  "website": "https://escolaexemplo.com"
+}
+
+### Obter todas as escolas
+GET {{baseUrl}}/schools
+Authorization: Bearer {{authToken}}
+
+### Obter uma escola específica
+GET {{baseUrl}}/schools/{{schoolId}}
+Authorization: Bearer {{authToken}}
+
+### Atualizar uma escola
+PATCH {{baseUrl}}/schools/{{schoolId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Escola Atualizada",
+  "address": "Rua Atualizada, 456",
+  "city": "Cidade Atualizada",
+  "state": "Estado Atualizado",
+  "country": "País Atualizado",
+  "phone": "987654321",
+  "website": "https://escolaatualizada.com"
+}
+
+### Remover uma escola
+DELETE {{baseUrl}}/schools/{{schoolId}}
+Authorization: Bearer {{authToken}}

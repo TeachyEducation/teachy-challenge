@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:3000
+@authToken = seu_token_jwt_aqui
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "usuario@example.com",
+  "password": "senha123"
+}
+
+### Registro
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "novo.usuario@example.com",
+  "password": "senha123",
+  "firstName": "Novo",
+  "lastName": "Usuário"
+}
+
+### Logout
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "sessionId": "id_da_sessao_aqui"
+}
+
+### Obter perfil do usuário autenticado
+GET {{baseUrl}}/auth/profile
+Authorization: Bearer {{authToken}}
